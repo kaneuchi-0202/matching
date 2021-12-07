@@ -38,3 +38,39 @@ def pref_result(request):
             'url': url,
         }
         return render(request, 'djangofirst/prefecture_result.html', context)
+
+def random_quiz(request):
+    selected_qa = quiz()
+    
+    num = [i for i in range(1,6)]
+    question = []
+    answer = []
+    
+    for i in selected_qa:
+        question.append(i[0])
+        answer.append(i[1])
+    
+    context = {
+        'title': 'ランダムクイズ',
+        'num': num,
+        'question': question,
+        'answer': answer,
+    }
+    return render(request, 'djangofirst/quiz_tpl.html', context)
+
+def quiz_result(request):
+    if request.method == 'POST':
+        score = 0
+        user_answer = request.POST.getlist('user_answer')
+        answer = request.POST.getlist('answer')
+        for i, j in zip(user_answer, answer):
+            if i == j:
+                score += 20
+        
+        context = {
+            'title': 'クイズの結果です',
+            'score': score,
+            'answer': answer,
+            'user_answer': user_answer,
+        }
+        return render(request, 'djangofirst/quiz_result.html', context)

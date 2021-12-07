@@ -7,4 +7,6 @@ urlpatterns =[
     path('', views.index, name='index'),
     path('pref_quiz', views.pref_quiz, name='pref_quiz'),
     path('pref_reult', views.pref_result, name='pref_result'),
+    path('random_quiz', views.random_quiz, name='random_quiz'),
+    path('quiz_result', views.quiz_result, name='quiz_result'),
 ]
