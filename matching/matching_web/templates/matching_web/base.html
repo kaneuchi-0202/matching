@@ -1,0 +1,27 @@
+{% load static %}
+
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <div class='container'>
+        {% include 'matching_web/header.html' %}
+        <div class='d-flex h-100'>
+            {% include 'matching_web/sidebar.html' %}
+
+            <div class='d-flex flex-column w-100'>
+                {% block contents %}{% endblock %}
+            </div>
+        </div>
+        {% include 'matching_web/footer.html' %}
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>
