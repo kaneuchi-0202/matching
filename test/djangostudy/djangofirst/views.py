@@ -74,3 +74,20 @@ def quiz_result(request):
             'user_answer': user_answer,
         }
         return render(request, 'djangofirst/quiz_result.html', context)
+    
+def wiki(request):
+    context = {
+        'title': 'Python版Wikipediaで調べる',
+    }
+    return render(request, 'djangofirst/wiki_tpl.html', context)
+
+def wiki_result(request):
+    if request.method == 'GET':
+        word = request.GET['word']
+        result = wikipy(word)
+        
+        context = {
+            'title': 'Python版Wikipediaで調べる',
+            'result': result,
+        }
+        return render(request, 'djangofirst/wiki_tpl.html', context)
